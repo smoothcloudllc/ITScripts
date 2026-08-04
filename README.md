@@ -37,15 +37,19 @@ sudo ./install/install-docker.sh
 
 ## Fail2ban estandar (Debian)
 
-Script hibrido: no interactivo por defecto (automatizable) o asistente guiado con `--guide`.
+Asistente guiado para tecnicos: instala fail2ban si falta y aplica una configuracion estandar.
 
 ```bash
-sudo ./hardening/install-fail2ban.sh                    # instalacion estandar
-sudo ./hardening/install-fail2ban.sh --guide           # asistente para tecnicos
-sudo ./hardening/install-fail2ban.sh --bantime 4h --maxretry 3 --no-detect
+sudo ./hardening/configure-fail2ban.sh
 ```
 
-Incluye ban incremental (reincidentes cada vez mas tiempo, tope 24h), backend systemd, `banaction` adaptado a nftables e ignora los rangos internos RFC1918 por defecto.
+Tambien via pipe (sin descargar):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/smoothcloudllc/ITScripts/main/hardening/configure-fail2ban.sh | sudo bash -s
+```
+
+Incluye ban incremental (reincidentes cada vez mas tiempo, tope 24h), backend systemd, `banaction` adaptado a nftables y deteccion de jails para servicios activos (nginx, postfix, dovecot, etc.).
 
 ## Contribuir
 
