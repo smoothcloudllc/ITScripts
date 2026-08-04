@@ -1,0 +1,28 @@
+# Secretos y credenciales: NUNCA se suben a este repo publico
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.p8
+id_rsa
+id_ed25519
+*secret*
+*credential*
+*password*
+*token*
+*id_rsa*
+*ssh_key*
+
+# Backups y temporales
+*.bak
+*.tmp
+*.log
+*.tar
+*.gz
+*.zip
+.DS_Store
+

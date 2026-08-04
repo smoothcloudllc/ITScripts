@@ -1,0 +1,14 @@
+title = "ITScripts gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exclusiones globales (test values)"
+paths = [
+  "tests/",
+]
+regexes = [
+  "AKIAIOSFODNN7EXAMPLE",
+  "password.*example",
+]

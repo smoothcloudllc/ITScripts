@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Hook de pre-commit: escanea secretos con gitleaks si esta instalado.
+# Fallback si no usas el framework pre-commit.
+
+set -euo pipefail
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "  - gitleaks no instalado. Instala con: go install github.com/gitleaks/gitleaks/v8@latest"
+  exit 0
+fi
+
+if ! gitleaks git --pre-commit --staged --config .gitleaks.toml 2>/dev/null; then
+  echo "  - [SECURITY] gitleaks detecto posibles secretos. Revisa antes de commitear."
+  exit 1
+fi
