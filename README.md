@@ -51,6 +51,26 @@ curl -fsSL https://raw.githubusercontent.com/smoothcloudllc/ITScripts/main/harde
 
 Incluye ban incremental (reincidentes cada vez mas tiempo, tope 24h), backend systemd, `banaction` adaptado a nftables y deteccion de jails para servicios activos (nginx, postfix, dovecot, etc.).
 
+## UFW primera configuracion (Debian)
+
+Asistente guiado para la primera configuracion del firewall. Garantiza no perder la gestion:
+
+- Detecta el puerto real de `sshd` y lo permite **antes** de activar UFW.
+- Anade la IP de tu sesion actual como whitelist.
+- Politicas por defecto: deny incoming / allow outgoing.
+- Pregunta que puertos de entrada abrir y aplica rate-limiting (anti fuerza bruta) al SSH.
+- Verifica al final que el acceso SSH sigue permitido.
+
+```bash
+sudo ./hardening/configure-ufw.sh
+```
+
+Via pipe:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/smoothcloudllc/ITScripts/main/hardening/configure-ufw.sh | sudo bash -s
+```
+
 ## Contribuir
 
 - Revisa que tu script no contenga secretos (`gitleaks detect .`).
