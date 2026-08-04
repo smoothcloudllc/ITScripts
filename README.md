@@ -35,6 +35,18 @@ ITScripts/
 sudo ./install/install-docker.sh
 ```
 
+## Fail2ban estandar (Debian)
+
+Script hibrido: no interactivo por defecto (automatizable) o asistente guiado con `--guide`.
+
+```bash
+sudo ./hardening/install-fail2ban.sh                    # instalacion estandar
+sudo ./hardening/install-fail2ban.sh --guide           # asistente para tecnicos
+sudo ./hardening/install-fail2ban.sh --bantime 4h --maxretry 3 --no-detect
+```
+
+Incluye ban incremental (reincidentes cada vez mas tiempo, tope 24h), backend systemd, `banaction` adaptado a nftables e ignora los rangos internos RFC1918 por defecto.
+
 ## Contribuir
 
 - Revisa que tu script no contenga secretos (`gitleaks detect .`).
